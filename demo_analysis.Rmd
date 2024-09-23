@@ -1,0 +1,71 @@
+---
+title: "Demo analysis"
+output: github_document
+---
+
+This is the demo analysis.
+
+The first thing to do is have setup block. This block is for:
+
+- Setting code environment
+- Load libraries
+- Setting parameters
+
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(knitr)
+knitr::opts_chunk$set(echo=FALSE)
+```
+
+## This is the first section
+
+You can print pretty tables using `knitr::kable()` 
+
+```{r show-head}
+mtcars |>
+  select(mpg) |> 
+  head() |>
+  kable()
+
+```
+Most times we want visualizations to tell us more stories or insights regarding the data collected.
+
+
+```{r mtcars-mpg-histgg-plot, message=FALSE}
+mtcars %>%
+  mutate(mpg = mpg / 10) %>%
+  filter(mpg < 100) %>%
+  select(mpg) %>%
+  ggplot(aes(x=mpg)) +
+  geom_histogram(fill="lightblue", col="black") +
+  theme_bw()  +
+  labs(x = "Miles per Gallon", y = "Count")
+```
+
+This plot shows the miles per gallon distribution in the `mtcars` dataset. 
+
+
+```{r mtcars-mpg-hist-baseR-plot}
+mtcars %>% 
+  select(mpg) %>%
+  pull() %>%
+  hist(col = "lightblue")
+
+
+```
+
+
+## This should be another section
+
+Now, we could fit a line of best fit to the plot (when they're scatterplots).
+
+```{r mtcars-mpg-disp-scatter-plot, message=FALSE}
+mtcars %>%
+  select(mpg, disp) %>%
+  ggplot(aes(x=mpg, y=disp)) +
+  geom_point(col = "red" , size=2) +
+  geom_smooth(method="lm") +
+  theme_bw()
+
+```
