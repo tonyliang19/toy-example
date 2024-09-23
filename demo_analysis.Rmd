@@ -1,6 +1,9 @@
 ---
 title: "Demo analysis"
-output: github_document
+output: 
+  github_document:
+    toc: true
+  
 ---
 
 This is the demo analysis.
@@ -39,8 +42,7 @@ mtcars %>%
   select(mpg) %>%
   ggplot(aes(x=mpg)) +
   geom_histogram(fill="lightblue", col="black") +
-  theme_bw()  +
-  labs(x = "Miles per Gallon", y = "Count")
+  theme_bw()
 ```
 
 This plot shows the miles per gallon distribution in the `mtcars` dataset. 
@@ -67,5 +69,4 @@ mtcars %>%
   geom_point(col = "red" , size=2) +
   geom_smooth(method="lm") +
   theme_bw()
-
 ```
