@@ -1,6 +1,9 @@
 Demo analysis
 ================
 
+- [This is the first section](#this-is-the-first-section)
+- [This should be another section](#this-should-be-another-section)
+
 This is the demo analysis.
 
 The first thing to do is have setup block. This block is for:
